@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Actions\Team\ApplyTeamContext;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
@@ -42,4 +43,9 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    public function withinContext($callback)
+    {
+        return (new ApplyTeamContext())->handle($this, $callback);
+    }
 }

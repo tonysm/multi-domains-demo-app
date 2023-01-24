@@ -29,7 +29,7 @@ return [
      |
      */
 
-    'middleware' => ['web'],
+    'middleware' => ['web', \App\Http\Middleware\TeamDomain::class],
 
     'auth_session' => AuthenticateSession::class,
 

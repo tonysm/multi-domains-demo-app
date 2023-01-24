@@ -1,0 +1,10 @@
+localhost, *.localhost {
+    reverse_proxy http://localhost:8000 {
+        # Send everything to the main app.
+        header_up Host {host}
+        header_up CustomerHost {host}
+
+        # It shouldn't take this long to handle the request.
+        health_timeout 5s
+    }
+}
