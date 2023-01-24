@@ -58,6 +58,8 @@ return [
 
     'main_url' => env('APP_URL', 'http://localhost'),
 
+    'proxy_domain' => env('APP_PROXY_DOMAIN', ''),
+
     'asset_url' => env('ASSET_URL'),
 
     /*

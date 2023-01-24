@@ -47,7 +47,10 @@ class CreateNewUser implements CreatesNewUsers
     {
         $team = request()->attributes->get('team');
 
-        $user->teams()->attach($team, ['role' => 'member']);
+        $user->teams()->attach($team, [
+            'role' => 'editor',
+        ]);
+
         $user->switchTeam($team);
     }
 }
