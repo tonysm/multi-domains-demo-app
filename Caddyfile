@@ -1,7 +1,9 @@
 localhost, *.localhost {
     reverse_proxy http://localhost:8000 {
-        # Send everything to the main app.
-        header_up Host {host}
+        header_up Host localhost
+        # Send the requested domain as a header just in case we need it.
+        # Caddy will set all the correct X-Forwarded headers, so we
+        # can configure the trusted proxies to the caddy IP.
         header_up CustomerHost {host}
 
         # It shouldn't take this long to handle the request.
